@@ -1,9 +1,9 @@
 import express from 'express';
-
+import { nanoid } from 'nanoid';
 const app = express();
 
 app.get("/api/create", (req, res) => {
-    res.send("Hello, this shortly. It is under development, we encarge you to visit as after few days.")
+    res.send(nanoid(7))
 })
 
 app.listen(3000, () =>{
