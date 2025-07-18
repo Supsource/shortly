@@ -1,9 +1,18 @@
+import { json } from 'express';
 import express from 'express';
+import { nanoid } from 'nanoid';
+import dotenv from "dotenv";
+import connectDB from './src/config/mongo.config.js';
+dotenv.config("./.env")
 
 const app = express();
 
-app.get("/api/create", (req, res) => {
-    res.send("Hello, this shortly. It is under development, we encarge you to visit as after few days.")
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+app.post("/api/create", (req, res) => {
+    const {url} = req.body;
+    res.send(nanoid(7))
 })
 
 app.listen(3000, () =>{
